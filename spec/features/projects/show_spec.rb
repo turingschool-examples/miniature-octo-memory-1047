@@ -39,4 +39,10 @@ RSpec.describe "projects show page" do
     expect(page).to have_content @news_chic.material
     expect(page).to have_content @recycled_material_challenge.theme
   end
+
+  it "shows the number of contestants on project" do
+    visit "/projects/#{@news_chic.id}"
+
+    expect(page).to have_content "Number of Contestants: #{@news_chic.contestants.count}"
+  end
 end
