@@ -1,0 +1,8 @@
+<h1>Contestants</h1>
+
+<% @contestants.each do | contestant | %>
+    <section>
+      <h3><%= contestant.name %></h3>
+      <p>Projects: <%= contestant.projects.pluck(:name).join(", ") %> </p>
+    </section>
+<% end %>
