@@ -59,4 +59,39 @@ RSpec.describe "projects show page" do
 
     expect(page).to have_content "Average Contestant Experience: 12.5 years"
   end
+
+  describe "adds contestant to project" do
+    # As a visitor,
+    # When I visit a project's show page
+    # I see a form to add a contestant to this project
+    # When I fill out a field with an existing contestants id
+    # And hit "Add Contestant To Project"
+    # I'm taken back to the project's show page
+    # And I see that the number of contestants has increased by 1
+    # And when I visit the contestants index page
+    # I see that project listed under that contestant's name
+    it "shows form to add contestant" do
+      visit "/projects/#{@news_chic.id}"
+      
+      expect(page).to have_field :name
+    end
+
+    it "redirects to projects show page, data increased, and reflected on contestants index" do
+      visit "/projects/#{@news_chic.id}"
+
+      fill_in "Name", with: "Sir TP"
+      fill_in "Years of Exp:", with: 3
+      fill_in "Age", with: 33
+      fill_in "Hometown", with: "PHX"
+      click_button "Add Contestant"
+
+      expect(page).to have_current_path "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content "Number of Contestants: 3"
+
+      visit "/contestants"
+
+      expect(page).to have_content "TP"
+    end
+  end
 end

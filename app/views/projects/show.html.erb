@@ -4,3 +4,17 @@
 <p>Challenge Theme: <%= @project.challenge.theme %></p>
 <p>Number of Contestants: <%= @project.contestants.count %></p>
 <p>Average Contestant Experience: <%= @project.avg_yoe_of_contestants %> years</p>
+
+<h3>Add Contestant</h3>
+<%= form_with url: "/projects/#{@project.id}/contestant", data: {turbo_method: :post} do |form| %>
+  <%= form.label :name  %>
+  <%= form.text_field :name  %>
+  <%= form.label :yoe, "Years of Exp:"  %>
+  <%= form.text_field :yoe  %>
+  <%= form.label :age  %>
+  <%= form.text_field :age  %>
+  <%= form.label :hometown  %>
+  <%= form.text_field :hometown  %>
+
+  <%= form.submit "Add Contestant"  %>
+<% end %>
