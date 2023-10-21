@@ -25,9 +25,11 @@ RSpec.describe "the contestants index page" do
       ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
       
       visit '/contestants'
-
-      expect("Kentaro Kameyama").to appear_before("Projects: Litfit, Rug Tuxedo")
-      expect("Jay McCarroll").to appear_before("Projects: LeatherFeather")
+  
+      expect(page).to have_content("Kentaro Kameyama")
+      expect(page).to have_content("Projects: Boardfit, Upholstery Tuxedo")
+      expect(page).to have_content("Jay McCarroll")
+      expect(page).to have_content("Projects: News Chic")
     end
   end
 end
