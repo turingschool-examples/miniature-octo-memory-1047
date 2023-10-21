@@ -7,4 +7,7 @@ class Project < ApplicationRecord
   def contestants_count
     contestants.count
   end
+
+  def average_experience
+  end
 end

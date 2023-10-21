@@ -31,8 +31,14 @@ RSpec.describe "project show" do
 
   describe "US 3 - visit a projects show page" do
     it "I see a count of number of contestants on this project" do
+      expect(page).to have_content("Number of Contestants: 3")
+    end
+  end
+
+  describe "US 4 - projects show page" do
+    it "I see the average years of experience for contestants that worked on that project" do
       save_and_open_page
-      expect(page).to have_content("Number of Contestants:")
+      expect(page).to have_content("Average Contestant Experience:")
     end
   end
 end

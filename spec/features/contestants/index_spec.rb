@@ -28,8 +28,6 @@ RSpec.describe "contestants index" do
 
   describe "US 2- visit contestants index page" do
     it "I see a list of names of all the contestants and under each contestants name I see a list of the projects (names that they've been on" do
-      save_and_open_page
-
       expect(page).to have_content("Name: #{@jay.name}")
       expect(page).to have_content("#{@news_chic.name}")
 
