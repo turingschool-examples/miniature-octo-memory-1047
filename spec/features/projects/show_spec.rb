@@ -17,8 +17,6 @@ RSpec.describe "project show" do
 
   describe "US 1- visit a projects show page" do
     it "I see the project's name, material and also the theme of the challenge this project belongs to" do
-      save_and_open_page
-
       expect(page).to have_content("Name: #{@news_chic.name}")
       expect(page).to have_content("Material: #{@news_chic.material}")
       expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
