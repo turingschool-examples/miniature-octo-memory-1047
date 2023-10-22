@@ -34,16 +34,16 @@ RSpec.describe "Contestants Index Page", type: :feature do
         expect(page).to have_content("Gretchen Jones")
         expect(page).to have_content("Kentaro Kameyama")
         expect(page).to have_content("Erin Robertson")
-        # save_and_open_page
       end
-
+      
       it "Under each contestants name I see a list of projects (names) that they've been on" do
         visit "/contestants"
-
+        
         expect(page).to have_content("News Chic")
         expect(page).to have_content("Upholstery Tuxedo")
         expect(page).to have_content("Boardfit")
         expect(page).to_not have_content("Litfit")
+        # save_and_open_page
       end
     end
   end
