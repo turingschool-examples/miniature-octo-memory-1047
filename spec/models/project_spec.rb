@@ -34,14 +34,20 @@ RSpec.describe Project, type: :model do
   end
   
   describe "#contestants_count" do
-  it 'can provide the number of contestants' do
-    expect(@news_chic.contestants_count).to eq(2)
+    it 'can provide the number of contestants' do
+      expect(@news_chic.contestants_count).to eq(2)
+    end
   end
   
   describe "#challenge_theme" do
-  it 'can provide the projects challenges theme' do
-        expect(@news_chic.challenge_theme).to eq(@recycled_material_challenge.theme)
-      end
+    it 'can provide the projects challenges theme' do
+      expect(@news_chic.challenge_theme).to eq(@recycled_material_challenge.theme)
+    end
+  end
+
+  describe "#avg_years_experience" do
+    it 'can provide average years of experience among contestants' do
+      expect(@news_chic.avg_years_experience).to eq(12.5)
     end
   end
 end
