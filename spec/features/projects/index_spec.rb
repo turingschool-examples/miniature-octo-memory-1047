@@ -13,14 +13,19 @@ RSpec.describe 'Projects show', type: :feature do
   end
 
   describe 'When a user visits project show page /projects/:id' do
-    it 'They see projects name and material' do
+    it 'They see projects name and material, two different pages' do
       visit "/projects/#{@upholstery_tux.id}"
       expect(page).to have_content(@upholstery_tux.name)
       expect(page).to have_content("Material: #{@upholstery_tux.material}")
+
+      visit "/projects/#{@lit_fit.id}"
+      expect(page).to have_content(@lit_fit.name)
+      expect(page).to have_content("Material: #{@lit_fit.material}")
     end
 
-    xit 'They also see the challenge that this theme belongs to' do
-      expect().to
+    it 'They also see the challenge that this theme belongs to' do
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Challenge Theme: #{@upholstery_tux.challenge.theme}")
     end
   end
 
