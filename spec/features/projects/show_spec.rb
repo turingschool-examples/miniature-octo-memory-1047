@@ -34,7 +34,6 @@ RSpec.describe "Project Show Page", type: :feature do
         expect(page).to have_content("Recycled Material")
         expect(page).to_not have_content("Boardfit")
         expect(page).to_not have_content("Apartment Furnishings")
-        save_and_open_page
       end
 
       #User Story 3
