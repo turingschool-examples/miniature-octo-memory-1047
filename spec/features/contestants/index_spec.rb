@@ -9,7 +9,6 @@ RSpec.describe "Contestants Index Page", type: :feature do
 
         @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
         @boardfit = @recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
-
         @upholstery_tux = @furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
         @lit_fit = @furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
 
