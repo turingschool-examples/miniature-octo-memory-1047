@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Index Page" do 
   describe "Contestants index page visit" do 
+    # US 2 
     it "shows the contestants and projects they've been on" do 
 
       recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
