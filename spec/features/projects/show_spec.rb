@@ -12,7 +12,7 @@ RSpec.describe "projects show page", type: :feature do
     @lit_fit = @furniture_challenge.projects.create(name: "Litfit", material: "Lamp")    
   end
   
-  it "displays the project name and material" do
+  it "displays the project name and material and its challenge theme" do
     visit "/projects/#{@news_chic.id}"
 
     expect(page).to have_content(@news_chic.name)
