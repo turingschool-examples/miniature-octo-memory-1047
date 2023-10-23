@@ -88,7 +88,7 @@ RSpec.describe 'Projects show', type: :feature do
 
       fill_in(:contestant_id, with: @jay.id)
       click_on("Add Contestant")
-      expect(current_path).to eq("projects/#{@upholstery_tux.id}")
+      expect(current_path).to eq("/projects/#{@upholstery_tux.id}")
       expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}") # 2
 
       visit "/contestants"
