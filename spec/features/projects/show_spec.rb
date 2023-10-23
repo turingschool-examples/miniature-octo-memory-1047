@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Show Page" do 
   describe "Project show page visit" do 
-    # US 1 & 3 
+    # US 1, 3, ext 1 
     it "shows the prjects theme and material" do 
 
       recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
@@ -23,6 +23,9 @@ RSpec.describe "Show Page" do
 
       expect(page).to have_content("Number of Contestants:")
       expect(page).to have_content(2)
+
+      expect(page).to have_content("Average Contestant Experience:")
+      expect(page).to have_content(12.5)
     end
   end
 end
