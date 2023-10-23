@@ -5,6 +5,6 @@ class Project < ApplicationRecord
   has_many :contestants, through: :contestant_projects
 
   def contestant_count
-    count()
+    ContestantProject.where("project_id = #{self.id}").count
   end
 end
