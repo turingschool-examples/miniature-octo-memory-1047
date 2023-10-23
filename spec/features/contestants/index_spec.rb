@@ -18,7 +18,6 @@ RSpec.describe 'Contestants index', type: :feature do
 
   describe 'When a user visits contestats index page /contestants' do
     it 'They see a list of all contestants' do
-      
       visit "/contestants"
 
       within "#contestant-#{@jay.id}" do
@@ -30,8 +29,16 @@ RSpec.describe 'Contestants index', type: :feature do
       end
     end
 
-    xit 'They see list of project names for each contestant' do
+    it 'They see list of project names for each contestant' do
+      visit "/contestants"
+      
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name}")
+      end
 
+      within "#contestant-#{@gretchen.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name} #{@upholstery_tux.name}")
+      end
     end
   end
 end
