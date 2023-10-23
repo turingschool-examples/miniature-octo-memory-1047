@@ -56,4 +56,45 @@ RSpec.describe 'Projects show', type: :feature do
     end
   end
 
+  describe 'When a user visits a project show page, they can add a contestant to a project through a form' do
+    before(:each) do
+      @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+      @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
+  
+      @news_chic = @recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper")
+      @upholstery_tux = @furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
+  
+      @jay = Contestant.create(name: "Jay McCarroll", age: 40, hometown: "LA", years_of_experience: 13)
+      @gretchen = Contestant.create(name: "Gretchen Jones", age: 36, hometown: "NYC", years_of_experience: 12)
+  
+      ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
+      ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+      ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
+    end
+
+    it 'They see a form to add a contestant to this project, by existing contestant id' do
+      visit "projects/#{@upholstery_tux.id}"
+      expect(find("form")).to have_content("Id")
+    end
+
+    it 'They fill out field with existing id, submit, taken back to project show page with number contestatnts increased, and project listed in contestants index' do
+      visit "/contestants"
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name}")
+      end
+      
+      visit "projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}") # 1
+
+      fill_in(:contestant_id, with: @jay.id)
+      click_on("Add Contestant")
+      expect(current_path).to eq("/projects/#{@upholstery_tux.id}")
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}") # 2
+
+      visit "/contestants"
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name} #{@upholstery_tux.name}")
+      end
+    end
+  end
 end
