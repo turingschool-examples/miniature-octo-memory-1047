@@ -11,4 +11,16 @@ RSpec.describe Project, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:contestants).through(:contestant_projects)}
   end
+
+  describe 'Instance methods' do
+    before(:each) do
+
+    end
+    
+    describe '#contestant_count' do
+      it 'Count of contestants for any project' do
+        expect().to
+      end
+    end
+  end
 end

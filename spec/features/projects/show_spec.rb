@@ -39,11 +39,12 @@ RSpec.describe 'Projects show', type: :feature do
       expect(page).to have_content("Challenge Theme: #{@upholstery_tux.challenge.theme}")
     end
 
-    xit 'They also see count of the number of contestants on this project' do
+    it 'They also see count of the number of contestants on this project' do
       visit "/projects/#{@upholstery_tux.id}"
-      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.challenge.theme}")
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}")
 
       visit "/projects/#{@lit_fit.id}"
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}")
     end
   end
 
