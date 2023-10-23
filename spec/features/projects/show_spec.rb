@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Show Page" do 
   describe "Project show page visit" do 
-    # US 1, 3, ext 1 
+    # US 1, 3, ext 1, ext 2 
     it "shows the prjects theme and material" do 
 
       recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
