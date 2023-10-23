@@ -10,7 +10,6 @@ class Project < ApplicationRecord
 
   def contestant_exp
     contestants_projects = ContestantProject.where("project_id = #{self.id}")
-
     contestants = contestants_projects.flat_map do |contestant_project|
       Contestant.where("id = #{contestant_project.contestant_id}")
     end
