@@ -41,5 +41,12 @@ RSpec.describe Project, type: :model do
         expect(@lit_fit.contestant_count).to eq(0)
       end
     end
+
+    describe '#contestant_experience_avg' do
+      it 'Average of experience of contestants for any project' do
+        expect(@news_chic.contestant_experience_avg).to eq(12.5)
+        expect(@lit_fit.contestant_experience_avg).to eq(0)
+      end
+    end
   end
 end
