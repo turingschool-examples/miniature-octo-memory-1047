@@ -20,4 +20,8 @@ class Project < ApplicationRecord
     end
     average_exp = exp/self.contestant_count
   end
+
+  def add_contestant(contestant)
+    self.contestants << contestant
+  end
 end

@@ -47,5 +47,13 @@ RSpec.describe Project, type: :model do
         expect(@news_chic.contestant_exp).to eq(15)
       end
     end
+
+    describe '#add_contestant' do
+      it 'adds a contestant to the project' do
+        @boardfit.add_contestant(@erin)
+        
+        expect(@boardfit.contestants).to eq([@jay, @erin])
+      end
+    end
   end
 end
