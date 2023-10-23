@@ -30,7 +30,7 @@ RSpec.describe "projects show page", type: :feature do
 
   it 'displays a count of contestants on the project' do
     visit "/projects/#{@news_chic.id}"
-save_and_open_page
+
     expect(page).to have_content("Number of Contestants: 2")
   end
 end

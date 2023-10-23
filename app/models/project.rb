@@ -7,4 +7,18 @@ class Project < ApplicationRecord
   def contestant_count
     ContestantProject.where("project_id = #{self.id}").count
   end
+
+  def contestant_exp
+    contestants_projects = ContestantProject.where("project_id = #{self.id}")
+
+    contestants = contestants_projects.flat_map do |contestant_project|
+      Contestant.where("id = #{contestant_project.contestant_id}")
+    end
+
+    exp = 0
+    contestants.each do |contestant|
+      exp += contestant.years_of_experience
+    end
+    average_exp = exp/self.contestant_count
+  end
 end
