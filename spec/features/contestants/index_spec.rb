@@ -26,7 +26,7 @@ RSpec.describe 'Contestants index', type: :feature do
       end
 
       within "#contestant-#{@gretchen.id}" do
-        expect(page).to have_content(@jay.name)
+        expect(page).to have_content(@gretchen.name)
       end
     end
 
