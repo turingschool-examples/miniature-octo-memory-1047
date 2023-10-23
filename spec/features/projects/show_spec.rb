@@ -22,6 +22,7 @@ RSpec.describe "Show Page" do
       expect(page).to have_content("Challenge Theme: #{recycled_material_challenge.theme}")
 
       expect(page).to have_content("Number of Contestants:")
+      expect(page).to have_content(2)
     end
   end
 end
