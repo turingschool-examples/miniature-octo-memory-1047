@@ -4,7 +4,8 @@ class Project < ApplicationRecord
   has_many :contestant_projects
   has_many :contestants, through: :contestant_projects
 
-  def avg_exp 
+  def avg_exp
+    return 0 if contestants.count == 0 
     (contestants.sum { |contestant| contestant.years_of_experience }.to_f / contestants.count).round(1)
   end
 end
