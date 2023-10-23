@@ -26,6 +26,10 @@ RSpec.describe "Show Page" do
 
       expect(page).to have_content("Average Contestant Experience:")
       expect(page).to have_content(12.5)
+
+      expect(page).to have_content("Add a contestant to this project")
+      expect(page).to have_field("Name")
+      expect(page).to have_button("Add Contestant To Project")
     end
   end
 end

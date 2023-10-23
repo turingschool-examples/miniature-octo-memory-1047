@@ -3,3 +3,10 @@
   <p>Challenge Theme: <%= @theme %></p>
   <p>Number of Contestants: <%= @project.contestants.count %></p>
   <p>Average Contestant Experience: <%= @project.contestants.avg_exp %></p>
+
+<h3> Add a contestant to this project </h3>
+  <%= form_with url: "/contestants/new", method: :post, data: { turbo: false } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Add Contestant To Project" %>
+<% end %>
