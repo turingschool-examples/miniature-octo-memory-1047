@@ -131,7 +131,7 @@ RSpec.describe "the project show" do
         fill_in(:contestant_id, with: "#{@erin.id}")
         click_button("Add Contestant To Project")
         visit "/contestants"
-        expect(page).to have_content("Projects: Litfit , News Chic , Boardfit")
+        expect(page).to have_content("Projects: News Chic , Boardfit , Litfit")
       end
     end
   end

@@ -3,3 +3,8 @@
 <p> <%= "Challenge Theme: #{@project.challenge.theme}" %> </p>
 <p> <%= "Number of Contestants: #{@project.contestants.count}" %> </p>
 <p> <%= "Average Contestant Experience: #{@project.avg_exp} years" %> </p>
+<p>Enter Contestant ID</p>
+  <%= form_with url: "/projects/#{@project.id}", method: :get, local: true do |f| %>
+    <%= f.text_field :contestant_id %>
+    <%= f.submit "Add Contestant To Project" %>
+  <% end %>
