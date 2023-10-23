@@ -1,0 +1,13 @@
+<h3> <%= "Contestants" %> </h3>
+
+<% @contestants.each do |contestant| %>
+  <p> <%= contestant.name %> </p>
+  <p><%= "Projects: " %>
+  <% contestant.projects.each do |project| %>
+    <%= "#{project.name}" %>
+    <% if contestant.projects.last != project %>
+      <%= "," %>
+    <% end %> 
+  <% end %>
+  </p>
+<% end %>
