@@ -74,7 +74,27 @@ RSpec.describe 'Projects show', type: :feature do
 
     it 'They see a form to add a contestant to this project, by existing contestant id' do
       visit "projects/#{@upholstery_tux.id}"
-      expect(find("form")).to have_content("Contestant id")
+      expect(find("form")).to have_content("Id")
+    end
+
+    it 'They fill out field with existing id, submit, taken back to project show page with number contestatnts increased, and project listed in contestants index' do
+      visit "/contestants"
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name}")
+      end
+      
+      visit "projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}") # 1
+
+      fill_in(:contestant_id, with: @jay.id)
+      click_on("Add Contestant")
+      expect(current_path).to eq("projects/#{@upholstery_tux.id}")
+      expect(page).to have_content("Number of Contestants: #{@upholstery_tux.contestant_count}") # 2
+
+      visit "/contestants"
+      within "#contestant-#{@jay.id}" do
+        expect(page).to have_content("Projects: #{@news_chic.name} #{@upholstery_tux.name}")
+      end
     end
   end
 end
