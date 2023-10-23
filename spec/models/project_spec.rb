@@ -50,7 +50,7 @@ RSpec.describe Project, type: :model do
 
     describe '#add_contestant' do
       it 'adds a contestant to the project' do
-        @boardfit.add_contestant(@erin)
+        @boardfit.add_contestant(@erin.id)
         
         expect(@boardfit.contestants).to eq([@jay, @erin])
       end

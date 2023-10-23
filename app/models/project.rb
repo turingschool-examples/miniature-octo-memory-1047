@@ -21,7 +21,8 @@ class Project < ApplicationRecord
     average_exp = exp/self.contestant_count
   end
 
-  def add_contestant(contestant)
+  def add_contestant(contestant_id)
+    contestant = Contestant.find(contestant_id)
     self.contestants << contestant
   end
 end

@@ -36,14 +36,14 @@ RSpec.describe "projects show page", type: :feature do
   end
 
   it 'has a form to fill in contestant id and add that contestant to project' do
-    visit "/projects/#{@lit_fit}"
+    visit "/projects/#{@lit_fit.id}"
 
     expect(page).to have_content("Number of Contestants: 1")
 
     fill_in "contestant_id", with: "#{@erin.id}"
     click_button "Add Contestant To Project"
 
-    expect(current_path).to eq("/projects/#{@lit_fit}")
+    expect(current_path).to eq("/projects/#{@lit_fit.id}")
     expect(page).to have_content("Number of Contestants: 2")
   end
 end
