@@ -5,3 +5,10 @@
 <p>Challenge Theme: <%= @theme%></p>
 <p>Number of Contestants: <%= @count%></p>
 <p>Average Contestant Experience: <%= @exp%></p>
+
+<p> Add Contestant To Project</p>
+<%= form_with url: "/projects/#{@project.id}", method: :patch, local: true, data: {turbo: false} do |f| %>
+    <%= f.label :contestant_id%>
+    <%= f.text_field :contestant_id%>
+    <%= f.submit "Add Contestant To Project" %>
+  <% end %>

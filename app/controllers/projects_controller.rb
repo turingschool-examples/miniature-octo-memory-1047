@@ -7,4 +7,15 @@ class ProjectsController < ApplicationController
     @exp = @project.average_exp
   end
 
+  def update
+    project = Project.find(params[:id])
+    contestant = Contestant.find(params[:contestant_id])
+
+    project.contestants << contestant
+
+    project.save
+    redirect_to "/projects/#{project.id}"
+
+  end
+
 end
