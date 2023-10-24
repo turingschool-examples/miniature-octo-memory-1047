@@ -54,7 +54,7 @@ RSpec.describe '/projects/:id' do
         # Material: Lamp Shade
         # Challenge Theme: Apartment Furnishings
         # Number of Contestants: 3 )
-        
+
         visit "/projects/#{@news_chic.id}"
         expect(page).to have_content("Number of Contestants: 1")
         
@@ -63,6 +63,26 @@ RSpec.describe '/projects/:id' do
         
         visit "/projects/#{@boardfit.id}"
         expect(page).to have_content("Number of Contestants: 3")
+      end
+
+      it 'shows average experience of contestants worked on that project' do
+        # As a visitor,
+        # When I visit a project's show page
+        # I see the average years of experience for the contestants that worked on that project
+        # (e.g.    Litfit
+        # Material: Lamp Shade
+        # Challenge Theme: Apartment Furnishings
+        # Number of Contestants: 3
+        # Average Contestant Experience: 10.25 years)
+
+        visit "/projects/#{@news_chic.id}"
+        expect(page).to have_content("Average Contestant Experience: 13")
+        
+        visit "/projects/#{@upholstery_tux.id}"
+        expect(page).to have_content("Average Contestant Experience: 10")
+        
+        visit "/projects/#{@boardfit.id}"
+        expect(page).to have_content("Average Contestant Experience: 12")
       end
     end
   end

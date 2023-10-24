@@ -5,10 +5,14 @@ class Project < ApplicationRecord
   has_many :contestants, through: :contestant_projects
 
   def challenge_theme
-    self.challenge.theme
+    challenge.theme
   end
 
   def num_contestants
-    self.contestants.count
+    contestants.count
+  end
+
+  def ave_exp
+    contestants.average(:years_of_experience).to_i
   end
 end
