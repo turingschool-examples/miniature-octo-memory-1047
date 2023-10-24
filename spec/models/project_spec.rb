@@ -11,4 +11,13 @@ RSpec.describe Project, type: :model do
     it {should have_many :contestant_projects}
     it {should have_many(:contestants).through(:contestant_projects)}
   end
+
+  describe 'challenge_theme' do
+    it 'shows project challenge theme' do
+      @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
+      @boardfit = @recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes")
+            
+      expect(@boardfit.challenge_theme).to eq("Recycled Material")
+    end
+  end
 end
