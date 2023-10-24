@@ -26,7 +26,7 @@ before(:each) do
   ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
 end
 
-# User Story 1
+# User Story 1 of 3
 #   As a visitor,
 # When I visit a project's show page ("/projects/:id"),
 # I see that project's name and material
@@ -53,9 +53,26 @@ end
     #   Challenge Theme: Apartment Furnishings
     #   Number of Contestants: 3 )
     it "I see a count of the number of contestants on this project" do
-      visit "projects/#{@news_chic.id}"
+      visit "/projects/#{@news_chic.id}"
 
       expect(page).to have_content("Number of Contestants: 2")
+    end
+
+    # User Story Extension 1 - Average years of experience for contestants by project
+
+    # As a visitor,
+    # When I visit a project's show page
+    # I see the average years of experience for the contestants that worked on that project
+    # (e.g.    Litfit
+    #     Material: Lamp Shade
+    #   Challenge Theme: Apartment Furnishings
+    #   Number of Contestants: 3
+    #   Average Contestant Experience: 10.25 years)
+    it "shows the average years of experience for the contestants
+    that worked on that project" do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("Average Contestant Experience: 13")
     end
   end
 
