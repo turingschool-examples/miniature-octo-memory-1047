@@ -37,4 +37,9 @@ RSpec.describe "Project Show Page" do
     expect(page).to have_content(@upholstery_tux.name)
     expect(page).to have_content(@upholstery_tux.contestants.count)
   end
+
+  it 'when visiting project show page, user can see the average years of experience per each contestant' do
+    visit "/projects/#{@upholstery_tux.id}"
+    save_and_open_page
+  end
 end
