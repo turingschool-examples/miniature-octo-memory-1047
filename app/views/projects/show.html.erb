@@ -1,0 +1,13 @@
+<h1>Project</h1>
+
+<p>Project Name: <%= @project.name %> </p>
+<p>Project Material: <%= @project.material %> </p>
+<p>Challege Theme: <%= @theme %> </p>
+<p>Number of Contestants: <%= @project.num_contestants %></p>
+<p>Average Contestant Experience: <%= @project.ave_exp %></p>
+
+<%= form_with url: "/projects/#{@project.id}", method: :patch, local: true do |form| %>
+<%= form.label :contestant_id, "Contestant ID" %>
+<%= form.text_field :contestant_id %>
+<%= form.submit "Add Contestant To Project" %>
+<% end %>
