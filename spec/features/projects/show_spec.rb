@@ -66,6 +66,7 @@ RSpec.describe '/projects/:id' do
       end
 
       it 'shows average experience of contestants worked on that project' do
+        #extension 1
         # As a visitor,
         # When I visit a project's show page
         # I see the average years of experience for the contestants that worked on that project
@@ -84,6 +85,30 @@ RSpec.describe '/projects/:id' do
         visit "/projects/#{@boardfit.id}"
         expect(page).to have_content("Average Contestant Experience: 12")
       end
+
+      # xit 'allows you to add a contestant' do
+      #   #extension 2
+      #   # As a visitor,
+      #   # When I visit a project's show page
+      #   # I see a form to add a contestant to this project
+      #   # When I fill out a field with an existing contestants id
+      #   # And hit "Add Contestant To Project"
+      #   # I'm taken back to the project's show page
+      #   # And I see that the number of contestants has increased by 1
+      #   # And when I visit the contestants index page
+      #   # I see that project listed under that contestant's name
+
+      #   visit "/projects/#{@news_chic.id}"
+      #   expect(page).to have_content("Number of Contestants: 1")
+      #   expect(page).to_not have_content(@gretchen.name)
+        
+      #   fill_in("Contestant ID", with: @gretchen.id)
+      #   click_button("Add Contestant To Project")
+        
+      #   expect(current_path).to eq("/projects/#{@news_chic.id}")
+      #   expect(page).to have_content("Number of Contestants: 2")
+      #   expect(page).to have_content(@gretchen.name)
+      # end
     end
   end
 end
