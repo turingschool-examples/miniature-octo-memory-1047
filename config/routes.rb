@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Projects
 
   get "/projects/:id", to: "projects#show"
+  patch "/projects/:id", to: "projects#update"
 
   # Contestants
 

@@ -74,6 +74,40 @@ end
 
       expect(page).to have_content("Average Contestant Experience: 13")
     end
+
+    # User Story Extension 2 - Adding a contestant to a project
+
+    # As a visitor,
+    # When I visit a project's show page
+    # I see a form to add a contestant to this project
+    # When I fill out a field with an existing contestants id
+    # And hit "Add Contestant To Project"
+    # I'm taken back to the project's show page
+    # And I see that the number of contestants has increased by 1
+    # And when I visit the contestants index page
+    # I see that project listed under that contestant's name
+    it "shows a form to add a contestant to this project" do
+      visit "/projects/#{@news_chic.id}"
+
+      expect(page).to have_content("Number of Contestants: 2")
+
+      expect(page).to have_content("Add Contestant To Project")
+
+      fill_in(:contestant_id, with: "#{@erin.id}")
+
+      click_button("Add Contestant To Project")
+
+      expect(page).to have_current_path("/projects/#{@news_chic.id}")
+
+      expect(page).to have_content("Number of Contestants: 3")
+
+      visit "/contestants"
+
+      within("#contestant-#{@erin.id}") do
+        expect(page).to have_content(@news_chic.name)
+        expect(page).to have_content(@boardfit.name)
+      end
+    end
   end
 
 
