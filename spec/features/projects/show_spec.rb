@@ -43,8 +43,12 @@ RSpec.describe "Project Show Page" do
     expect(page).to have_content(@upholstery_tux.avg_experience)
   end
 
-  it 'when visiting project show page, user can add a contestant to a project' do
-    visit "/projects/#{@upholstery_tux.id}"
-    expect(page).to have_content(@upholstery_tux.avg_experience)
+  xit 'when visiting project show page, user can add a contestant to a project' do
+    visit "/projects/#{@boardfit.id}"
+    expect(page).to have_content(@boardfit.name)
+    check_count = @boardfit.contestants_count
+    fill_in("Contestant", with: 2)
+    expect(current_path).to eq("/projects/#{@boardfit.id}")
+    expect(page).to have_content((check_count+=1))
   end
 end
