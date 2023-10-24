@@ -25,11 +25,36 @@ RSpec.describe Contestant, type: :feature do
   end
 
   it 'shows a list of the contestants and the projects they have done' do
+    # As a visitor,
+    # When I visit the contestants index page ("/contestants")
     visit "/contestants"
+    # I see a list of names of all the contestants
     expect(page).to have_content("Jay McCarroll")
     expect(page).to have_content("Gretchen Jones")
     expect(page).to have_content("Kentaro Kameyama")
-
-  
+    expect(page).to have_content("Erin Robertson")
+    # And under each contestant's name I see a list of the projects (names) that they've been on
+    expect(page).to have_content("News Chic", count: 2)
+    expect(page).to have_content("Boardfit", count: 2)
+    expect(page).to have_content("Upholstery Tuxedo")
+    expect(page).to have_content("Litfit")
   end
+
+  xit 'shows a list of the contestants projects' do
+    visit "/contestants"
+    within("section#projects") do
+      expect(page).to have_content("Jay McCarroll: News Chic")
+      expect(page).to have_content("Gretchen Jones: News Chic, Upholstery Tuxedo")
+      expect(page).to have_content("Kentaro Kameyama: Upholstery Tuxedo, Boardfit")
+      expect(page).to have_content("Erin Robertson: Boardfit")
+    end
+  end
+
 end
+
+# (e.g.   Kentaro Kameyama
+#         Projects: Litfit, Rug Tuxedo
+
+#         Jay McCarroll
+#         Projects: LeatherFeather)
+# end
