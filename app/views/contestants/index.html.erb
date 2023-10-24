@@ -1,0 +1,5 @@
+<% @contestants.each do |cont| %>
+  <h3><%= cont.name %></h3>
+  <p>Projects: <%= cont.projects.pluck(:name).join(", ") %></p>
+<% end %>
+  
