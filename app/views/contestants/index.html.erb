@@ -1,0 +1,5 @@
+<h3> Contestant Information</h3>
+<% @contestant.each do |c| %>
+  <h3> <%= c.name %></h3>
+  <h3>Projects: <%= c.projects.pluck(:name).join(', ') %></h3>
+<% end %>
