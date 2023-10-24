@@ -1,3 +1,5 @@
+require "rails_helper"
+
 RSpec.describe  "contestants#index page" do
 
   it "shows a list of names of all the contestants" do 
