@@ -28,4 +28,16 @@ RSpec.describe "the project show page" do
   #   Challenge Theme: Apartment Furnishings)
     expect(page).to have_content("Recycled Material")
   end
+
+  it "shows how many contestants on each project" do
+    #     As a visitor,
+    # When I visit a project's show page
+    visit("/projects/#{news_chic.id}")
+    # I see a count of the number of contestants on this project
+    expect(page).to have_content("2")
+    # (e.g.    Litfit
+    #     Material: Lamp Shade
+    #   Challenge Theme: Apartment Furnishings
+    #   Number of Contestants: 3 )
+  end
 end
