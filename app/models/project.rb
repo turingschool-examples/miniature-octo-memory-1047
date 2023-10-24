@@ -7,4 +7,12 @@ class Project < ApplicationRecord
   def challenge_theme
     challenge.theme
   end
+
+  def number_of_contestants
+    contestants.count
+  end
+
+  def average_years_of_experience
+    average_years = contestants.average(:years_of_experience)
+  end
 end
