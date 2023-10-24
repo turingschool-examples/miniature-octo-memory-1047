@@ -48,11 +48,27 @@ RSpec.describe "contestants#index" do
       expect(page).to have_content(@erin.name)
     end
 
-    xit "under each contestant's name I see a list of 
+    it "under each contestant's name I see a list of 
     all the projects (names) they've been on" do
       visit "/contestants"
+      
+      within("#contestant-#{@jay.id}") do
+        expect(page).to have_content(@news_chic.name)
+      end
 
-      expect(page).to have_content()
+      within("#contestant-#{@gretchen.id}") do
+        expect(page).to have_content(@news_chic.name)
+        expect(page).to have_content(@upholstery_tux.name)
+      end
+
+      within("#contestant-#{@kentaro.id}") do
+      expect(page).to have_content(@upholstery_tux.name)
+        expect(page).to have_content(@boardfit.name)
+      end
+
+      within("#contestant-#{@erin.id}") do
+        expect(page).to have_content(@boardfit.name)
+      end
     end
 
 
