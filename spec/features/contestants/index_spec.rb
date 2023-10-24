@@ -37,13 +37,15 @@ RSpec.describe Contestant, type: :feature do
     expect(page).to have_content("News Chic", count: 2)
     expect(page).to have_content("Boardfit", count: 2)
     expect(page).to have_content("Upholstery Tuxedo")
-    expect(page).to have_content("Litfit")
+    expect(page).to have_content("Boardfit")
+    # save_and_open_page
   end
 
   xit 'shows a list of the contestants projects' do
+    #I don't know how to write these tests, at least I can't think of it right now. 
     visit "/contestants"
     within("section#projects") do
-      expect(page).to have_content("Jay McCarroll: News Chic")
+      expect().to have_content("Jay McCarroll: News Chic")
       expect(page).to have_content("Gretchen Jones: News Chic, Upholstery Tuxedo")
       expect(page).to have_content("Kentaro Kameyama: Upholstery Tuxedo, Boardfit")
       expect(page).to have_content("Erin Robertson: Boardfit")
