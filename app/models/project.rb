@@ -6,6 +6,10 @@ class Project < ApplicationRecord
   has_many :contestants, through: :contestant_projects
 
   def challenge_theme
-    challenge.theme
+    self.challenge.theme
+  end
+
+  def con_count
+    self.contestants.count
   end
 end
