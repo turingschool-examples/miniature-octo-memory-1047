@@ -40,6 +40,11 @@ RSpec.describe "Project Show Page" do
 
   it 'when visiting project show page, user can see the average years of experience per each contestant' do
     visit "/projects/#{@upholstery_tux.id}"
-    save_and_open_page
+    expect(page).to have_content(@upholstery_tux.avg_experience)
+  end
+
+  it 'when visiting project show page, user can add a contestant to a project' do
+    visit "/projects/#{@upholstery_tux.id}"
+    expect(page).to have_content(@upholstery_tux.avg_experience)
   end
 end
