@@ -10,8 +10,6 @@ RSpec.describe "projects#show" do
     
     @upholstery_tux = @furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch")
     @lit_fit = @furniture_challenge.projects.create(name: "Litfit", material: "Lamp")
-    
-
   end
 
 # User Story 1
