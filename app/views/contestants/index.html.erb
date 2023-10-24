@@ -1,0 +1,5 @@
+<h3>All Contestants for Project Runway</h3>
+<% @contestants.each do |c| %>
+    <h4><%= c.name %></h4> 
+    <p>Projects: <%= c.projects.map{|project| project.name}.join(", ")%></p>
+<% end %>
