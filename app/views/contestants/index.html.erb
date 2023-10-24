@@ -1,0 +1,12 @@
+<h1>All Contestants</h1>
+
+<% @contestants.each do |contestant| %>
+  <h3>Name: <%= contestant.name %></h3>
+  <b><%= "Projects:" %></b>
+  <% contestant.projects.each_with_index do |project, index|%>
+    <%= project.name %>
+    <% unless index == contestant.projects.length - 1 %>
+      <%= "," %>
+    <% end %>
+  <% end %>
+<% end %>
