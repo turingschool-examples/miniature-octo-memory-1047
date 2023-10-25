@@ -41,6 +41,7 @@ RSpec.describe "Projects show page (/projects/:id)" do
 
     it "shows the average years of experience for the contestants that worked on that project" do 
       visit "/projects/#{boardfit.id}"
+      save_and_open_page
       expect(page).to have_content("Boardfit")
       expect(page).to have_content("Material: Cardboard Boxes")
       expect(page).to have_content("Challenge Theme: Recycled Material")

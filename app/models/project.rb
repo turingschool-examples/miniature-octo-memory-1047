@@ -12,4 +12,12 @@ class Project < ApplicationRecord
     contestants.count
   end
   
+  def contestant_avg_exp
+    total_exp = contestants.pluck(:years_of_experience).sum
+    if total_exp > 0
+      avg_exp = total_exp / count_contestants
+    else
+      total_exp
+    end
+  end
 end
