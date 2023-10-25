@@ -33,6 +33,11 @@ RSpec.describe "Project Show Page", type: :feature do
         expect(page).to have_content("Material: #{@boardfit.material}")
         expect(page).to have_content("Challenge Theme: #{@boardfit.challenge.theme}")
       end
+
+      # US 3
+      it "displays the number of contestants on the project" do
+        expect(page).to have_content("Number of Contestants: 2")
+      end
     end
   end
 end
