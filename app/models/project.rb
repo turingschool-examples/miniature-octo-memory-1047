@@ -10,7 +10,6 @@ class Project < ApplicationRecord
 
   def add_contestant(cont_id)
     new_contestant = Contestant.find(cont_id)
-    # require 'pry'; binding.pry
     unless self.contestants.include?(new_contestant)
       self.contestants << new_contestant
     end
