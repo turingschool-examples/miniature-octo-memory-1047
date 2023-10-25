@@ -6,7 +6,7 @@ RSpec.describe "Projects show page (/projects/:id)" do
   let(:news_chic) { recycled_material_challenge.projects.create(name: "News Chic", material: "Newspaper") } 
   let(:boardfit) { recycled_material_challenge.projects.create(name: "Boardfit", material: "Cardboard Boxes") } 
   let(:upholstery_tux) { furniture_challenge.projects.create(name: "Upholstery Tuxedo", material: "Couch") } 
-  let(:lit_fit) { furniture_challenge.projects.create(name: "Litfit", material: "Lamp") } 
+  let(:lit_fit) { furniture_challenge.projects.create(name: "Litfit", material: "Lamp Shade") } 
   
   describe " When I visit a projects show page (/projects/:id)" do 
     it "shows that projects name and material, as well as the theme of the challenge the project belongs to" do 
