@@ -41,14 +41,45 @@ RSpec.describe "Projects show page (/projects/:id)" do
 
     it "shows the average years of experience for the contestants that worked on that project" do 
       visit "/projects/#{boardfit.id}"
-      save_and_open_page
       expect(page).to have_content("Boardfit")
       expect(page).to have_content("Material: Cardboard Boxes")
       expect(page).to have_content("Challenge Theme: Recycled Material")
       expect(page).to have_content("Number of Contestants: 3")
-      expect(page).to have_content("Average Contestant Experience: 12 years")
+      expect(page).to have_content("Average Contestant Experience: 12.0 years")
+    end
+
+    describe "Adding a contestant to a project" do 
+      it "has a form to add a contestant to this project using an existing contestants id" do 
+        visit "/projects/#{boardfit.id}"
+        within("#add_contestant") do
+          expect(page).to have_field(:contestant_id)
+        end
+      end
+
+      it "takes me back to the project's show page, And I see that the number of contestants has increased by 1" do 
+
+        visit "/projects/#{boardfit.id}"
+        within("#add_contestant") do
+          fill_in :contestant_id, with: "#{gretchen.id}"
+        end
+        click_button "Add Contestant To Project"
+        
+        expect(current_path).to eq("/projects/#{boardfit.id}")
+        expect(page).to have_content("Number of Contestants: 4")
+        expect(page).to have_content("Average Contestant Experience: 12.0 years")
+      end
+      
+      it "will add the project under the contestants name on the contestant index page (/contestants)" do 
+        visit "/projects/#{boardfit.id}"
+        within("#add_contestant") do
+          fill_in :contestant_id, with: "#{gretchen.id}"
+        end
+        click_button "Add Contestant To Project"
+        visit "/contestants"
+
+        expect(page).to have_content(gretchen.name)
+        expect(page).to have_content("Projects: #{news_chic.name} #{upholstery_tux.name} #{boardfit.name}")
+      end
     end
   end
-  
-  
 end 

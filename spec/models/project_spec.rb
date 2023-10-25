@@ -41,7 +41,7 @@ RSpec.describe Project, type: :model do
       ContestantProject.create(contestant_id: gretchen.id, project_id: news_chic.id)
       ContestantProject.create(contestant_id: jay.id, project_id: news_chic.id)
 
-      expect(news_chic.contestant_avg_exp).to eq(12)
+      expect(news_chic.contestant_avg_exp).to eq(12.5)
     end
     it "will not calculate the average if there are no contestants" do 
        recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
