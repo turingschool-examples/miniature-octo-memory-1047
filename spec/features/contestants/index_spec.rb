@@ -8,6 +8,8 @@ RSpec.describe  "contestants#index page" do
     kentaro = Contestant.create(name: "Kentaro Kameyama", age: 30, hometown: "Boston", years_of_experience: 8)
     erin = Contestant.create(name: "Erin Robertson", age: 44, hometown: "Denver", years_of_experience: 15)
 
+    visit "/contestants"
+    
     expect(page).to have_content("Jay McCarroll")
     expect(page).to have_content("Gretchen Jones")
     expect(page).to have_content("Kentaro Kameyama")

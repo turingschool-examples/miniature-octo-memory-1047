@@ -1,2 +1,5 @@
-<p><%= @project.name %></p>
-<p><%= @project.material%>
+  <p>Project: <%= @project.name %></p>
+  <p>Material: <%= @project.material%>
+  <p>Challenge Theme: <%= @project.challenge.theme %></p>
+  <p>Number of Contestants: <%= @project.contestants.count %></p>
+  <p>Average Age of Contestants: <%= @project.average_years_experience %>
