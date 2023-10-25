@@ -1,4 +1,12 @@
 <h2>Project Name: <%= @project.name %></h2>
+
+<%= form_with url: "/projects/#{@project.id}", method: :get, local: true, data: {turbo:false} do |f| %>
+  <%= f.label "Contestant ID:" %>
+  <%= f.text_field :cont_id %>
+  <%= f.submit "Add Contestant To Project" %>
+<% end %>
+
 <p>Material: <%= @project.material %> </p>
 <p>Theme: <%= @project.challenge.theme %></p>
 <p>Contestant Count: <%= @project.contestants.count %></p>
+<p>Average Contestant Experience: <%= @avg_exp %></p>
