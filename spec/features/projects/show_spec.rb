@@ -38,6 +38,15 @@ RSpec.describe "Projects show page (/projects/:id)" do
       expect(page).to have_content("Challenge Theme: Recycled Material")
       expect(page).to have_content("Number of Contestants: 3")
     end
+
+    it "shows the average years of experience for the contestants that worked on that project" do 
+      visit "/projects/#{boardfit.id}"
+      expect(page).to have_content("Boardfit")
+      expect(page).to have_content("Material: Cardboard Boxes")
+      expect(page).to have_content("Challenge Theme: Recycled Material")
+      expect(page).to have_content("Number of Contestants: 3")
+      expect(page).to have_content("Average Contestant Experience: 12 years")
+    end
   end
   
   
