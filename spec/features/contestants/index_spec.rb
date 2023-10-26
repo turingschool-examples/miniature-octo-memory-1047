@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Projects show page' do
+RSpec.describe "Contestants Index page" do
   before(:each) do
 
 recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
@@ -25,19 +25,21 @@ ContestantProject.create(contestant_id: kentaro.id, project_id: upholstery_tux.i
 ContestantProject.create(contestant_id: kentaro.id, project_id: boardfit.id)
 ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
   end
-  
-  describe "When I visit a project's show page" do
-    it 'displays project name and material and theme of challenge for this project' do
-      challenge = Challenge.create(theme: 'Volcano' project_budget: 500)
-      project = challenge.projects.create(name: 'Volcano Project' material: 'Clay')
 
-      visit "/projects/#{@news_chic.id}"
+  describe "When I visit the contestants index page" do
+    xit 'displays list of names of contestants and a list of the project names theyve been on' do
+      visit "/contestants"
 
-      expect(page).to have_content(@news_chic.name)
-      expect(page).to have_content("Material: #{@news_chic.material}")
-      expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
+      within("#contestant-#{@gretchen.id}") do
+        expect(page).to have_content(@gretchen.name)
+        expect(page).to have_content(@news_chic.name)
+        expect(page).to have_content(@upholstery_tux.name)
+      end
+
+      within("#contestant-#{@erin.id}") do
+        expect(page).to have_content(@erin.name)
+        expect(page).to have_content(@boardfit.name)
+      end
     end
   end
-
-
 end
