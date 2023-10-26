@@ -28,8 +28,6 @@ ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
   
   describe "When I visit a project's show page" do
     it 'displays project name and material and theme of challenge for this project' do
-      challenge = Challenge.create(theme: 'Volcano' project_budget: 500)
-      project = challenge.projects.create(name: 'Volcano Project' material: 'Clay')
 
       visit "/projects/#{@news_chic.id}"
 
@@ -39,5 +37,16 @@ ContestantProject.create(contestant_id: erin.id, project_id: boardfit.id)
     end
   end
 
+  describe "When I visit a project's show page" do
+    it 'displays the count of the number of contestants on specified project' do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content("Number of Contestants: 2")
 
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{@boardfit.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+    end
+  end
 end
