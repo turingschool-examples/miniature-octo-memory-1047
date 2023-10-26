@@ -1,8 +1,8 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+RSpec.describe 'Projects show page' do
   before(:each) do
-    
+
     @recycled_material_challenge = Challenge.create(theme: "Recycled Material", project_budget: 1000)
     @furniture_challenge = Challenge.create(theme: "Apartment Furnishings", project_budget: 1000)
 
@@ -24,37 +24,42 @@ RSpec.describe Project, type: :model do
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
-  
   end
-  describe "validations" do
-    it {should validate_presence_of :name}
-    it {should validate_presence_of :material}
-  end
+  # USER STORY 1
+  describe "When I visit a project's show page" do
+    it 'displays project name and material and theme of challenge for this project' do
 
-  describe "relationships" do
-    it {should belong_to :challenge}
-    it {should have_many :contestant_projects}
-    it {should have_many(:contestants).through(:contestant_projects)}
-  end
+      visit "/projects/#{@news_chic.id}"
 
-  describe "#challenge_theme" do
-    it 'displays the challenge theme' do
-      expect(@news_chic.challenge_theme).to eq("Recycled Material")
+      expect(page).to have_content(@news_chic.name)
+      expect(page).to have_content("Material: #{@news_chic.material}")
+      expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
     end
   end
+  # USER STORY 3
+  describe "When I visit a project's show page" do
+    it 'displays the count of the number of contestants on specified project' do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content("Number of Contestants: 2")
 
-  describe "#contestants_count" do
-    it 'displays the count of contestants on a given project' do
-      expect(@news_chic.contestants_count).to eq(2)
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Number of Contestants: 2")
+
+      visit "/projects/#{@boardfit.id}"
+      expect(page).to have_content("Number of Contestants: 2")
     end
   end
+  # EXTENSION 1
+  describe "When I visit a project's show page" do
+    it 'displays the average years of experience for contestants by project' do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content("Contestant Average Experience: 12")
 
-  describe "#avg_experience" do
-    it 'displays contestants average years of experience by project' do
-      expect(@news_chic.avg_experience).to eq(12)
-      expect(@upholstery_tux.avg_experience).to eq(10)
-      expect(@boardfit.avg_experience).to eq(11)
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Contestant Average Experience: 10")
+
+      visit "/projects/#{@boardfit.id}"
+      expect(page).to have_content("Contestant Average Experience: 11")
     end
   end
-
 end
