@@ -25,7 +25,7 @@ RSpec.describe 'Projects show page' do
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
   end
-  
+  # USER STORY 1
   describe "When I visit a project's show page" do
     it 'displays project name and material and theme of challenge for this project' do
 
@@ -36,7 +36,7 @@ RSpec.describe 'Projects show page' do
       expect(page).to have_content("Challenge Theme: #{@recycled_material_challenge.theme}")
     end
   end
-
+  # USER STORY 3
   describe "When I visit a project's show page" do
     it 'displays the count of the number of contestants on specified project' do
       visit "/projects/#{@news_chic.id}"
@@ -47,6 +47,19 @@ RSpec.describe 'Projects show page' do
 
       visit "/projects/#{@boardfit.id}"
       expect(page).to have_content("Number of Contestants: 2")
+    end
+  end
+  # EXTENSION 1
+  describe "When I visit a project's show page" do
+    it 'displays the average years of experience for contestants by project' do
+      visit "/projects/#{@news_chic.id}"
+      expect(page).to have_content("Contestant Average Experience: 12")
+
+      visit "/projects/#{@upholstery_tux.id}"
+      expect(page).to have_content("Contestant Average Experience: 10")
+
+      visit "/projects/#{@boardfit.id}"
+      expect(page).to have_content("Contestant Average Experience: 11")
     end
   end
 end

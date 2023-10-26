@@ -25,7 +25,7 @@ RSpec.describe "Contestants Index page" do
     ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
     ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
   end
-
+  # USER STORY 2
   describe "When I visit the contestants index page" do
     it 'displays list of names of contestants and a list of the project names theyve been on' do
       visit "/contestants"
